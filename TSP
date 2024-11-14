@@ -27,3 +27,6 @@ if __name__ == "__main__":
     ] 
     s = 0   
     print(travelling_salesman_problem(graph, s) )  
+
+
+out:80
