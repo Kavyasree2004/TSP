@@ -1,0 +1,29 @@
+from itertools import permutations  
+from sys import maxsize
+V = 4 
+def travelling_salesman_problem(graph, s):    
+    vertex = []  
+    for i in range(V):  
+        if i != s:  
+            nodes.append(i)   
+    min_path = maxsize   
+    next_permutation = permutations(nodes)  
+    for i in next_permutation:   
+        currentPathWeight = 0  
+        k = s
+        for j in i:  
+            currentPathWeight += graph[k][j]  
+            k = j  
+        currentPathWeight += graph[k][s]   
+        min_path = min(min_path, currentPathWeight)          
+    return min_path  
+  # main function
+if __name__ == "__main__":   
+    graph = [  
+        [ 0, 10, 15, 20 ],  
+        [ 10, 0, 35, 25 ],  
+        [ 15, 35, 0, 30 ],  
+        [ 20, 25, 30, 0 ]  
+    ] 
+    s = 0   
+    print(travelling_salesman_problem(graph, s) )  
