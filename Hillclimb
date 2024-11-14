@@ -1,0 +1,32 @@
+from numpy import asarray
+from numpy.random import randn
+from numpy.random import rand
+from numpy.random import seed
+from matplotlib import pyplot
+def objective(x):
+	return x[0]**2.0
+def hillclimbing(objective, bounds, n_iterations, step_size):
+	solution = bounds[:, 0] + rand(len(bounds)) * (bounds[:, 1] - bounds[:, 0]) 
+	solution_eval = objective(solution) 
+  scores. append(solution_eval)
+	for i in range(n_iterations):
+		candidate = solution + randn(len(bounds)) * step_size
+		candidte_eval = objective(candidate) 
+		if candidte_eval <= solution_eval:
+			solution, solution_eval = candidate, candidte_eval
+      scores. append(solution_eval) 
+			print('>%d f(%s) = %.5f' % (i, solution, solution_eval))
+	return [solution, solution_eval, scores]
+seed(5)
+bounds = asarray([[-5.0, 5.0]])
+n_iterations = 25
+step_size = 0.1
+best, score, scores = hillclimbing(objective, bounds, n_iterations, step_size)
+print('Done!')
+print('f(%s) = %f' % (best, score))
+pyplot. plot(scores, '. -') 
+pyplot. xlabel('Improvement numerous) 
+pyplot. ylabel('Evaluation f(x) ') 
+pyplot. show() 
+
+
